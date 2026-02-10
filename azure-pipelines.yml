@@ -8,7 +8,8 @@ trigger:
 
 pool:
 #  vmImage: ubuntu-latest
-  name: Azure Pipeline Agent
+  #name: Azure Pipeline Agent
+  vmImage: "windows-latest"
 
 variables:
   buildConfiguration: 'Release'
