@@ -25,6 +25,18 @@ stages:
         echo "Running unit tests..."
       displayName: 'Running unit tests'
 
+- stage: TEST
+  displayName: 'Test Stage'
+  dependsOn: BUILD
+  isSkippable: false #attribute
+  jobs:
+  - job: TestJob
+    displayName: 'Test Job'
+    steps:
+    - script: |
+        echo "Running unit tests..."
+      displayName: 'Running unit tests'
+
 
 
 
