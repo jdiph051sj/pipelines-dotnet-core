@@ -37,7 +37,19 @@ stages:
         echo "Running unit tests..."
       displayName: 'Running unit tests'
 
-
+- stage: DeployToStaging
+  displayName: 'Deploy To Staging'
+  dependsOn: TEST
+  #isSkippable: false #attribute
+  jobs:
+  - job: DeployStagingJob
+    displayName: 'Deploy To Staging Job'
+    pool:
+      name: Azure Pipeline Agent
+    steps:
+    - script: |
+        echo "Build Staging Job..."
+      displayName: 'Build and Deploy To Staging'
 
 
 #variables:
