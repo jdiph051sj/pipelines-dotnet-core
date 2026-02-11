@@ -51,6 +51,18 @@ stages:
         echo "Build Staging Job..."
       displayName: 'Build and Deploy To Staging'
 
+  - job: DeployStagingJobWithValidation
+    pool: server
+    timeoutInMinutes: 4320 # job times out in 3 days
+    displayName: 'Deploy to Staging Job'
+    steps:
+    - task: ManualValidation@1
+      timeoutInMinutes: 1440 # task times out in 1 day
+      inputs:
+        notifyUsers: diphokos@nra.co.za, jdiph051@gmail.com, 
+        instructions: 'Please validate the stage configuration and resume'
+        onTimeout: 'resume'
+
 
 #variables:
  # buildConfiguration: 'Release'
