@@ -27,8 +27,8 @@ stages:
 
 - stage: TEST
   displayName: 'Test Stage'
-  dependsOn: BUILD
-  isSkippable: false #attribute
+ # dependsOn: BUILD
+  #isSkippable: false #attribute
   jobs:
   - job: TestJob
     displayName: 'Test Job'
