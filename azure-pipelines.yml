@@ -11,12 +11,29 @@ pool:
   name: Azure Pipeline Agent
   #vmImage: "windows-latest"
 
-variables:
-  buildConfiguration: 'Release'
+stages:
+- stage: BUILD
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build Job'
+    steps:
+    - script: |
+        echo "Restoring project dependencies..."
+      displayName: 'Restore dependencies'
+    - script: |
+        echo "Running unit tests..."
+      displayName: 'Running unit tests'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+
+
+
+#variables:
+ # buildConfiguration: 'Release'
+
+#steps:
+#- script: dotnet build --configuration $(buildConfiguration)
+ # displayName: 'dotnet build $(buildConfiguration)'
 
 #- task: PublishCodeCoverageResults@2
  # inputs:
