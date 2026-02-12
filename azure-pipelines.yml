@@ -59,7 +59,8 @@ stages:
     - task: ManualValidation@1
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
-        notifyUsers: 'diphokos@nra.co.za; jdiph051@gmail.com, letsebem@nra.co.za, mafaralalam@nra.co.za'
+        #notifyUsers: 'diphokos@nra.co.za; jdiph051@gmail.com, letsebem@nra.co.za, mafaralalam@nra.co.za'
+        notifyUsers: mafaralalam@nra.co.za
         instructions: 'Please validate the stage configuration and resume'
         onTimeout: 'resume'
 
