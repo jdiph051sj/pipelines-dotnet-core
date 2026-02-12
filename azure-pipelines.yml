@@ -65,6 +65,8 @@ stages:
 
 - stage: DeployToQA
   displayName: 'Deploy to QA'
+  #dependsOn: DeployToStaging
+  #isSkippable: false #attribute
   condition: succeeded()
   trigger: manual
   jobs:
