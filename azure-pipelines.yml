@@ -78,6 +78,18 @@ stages:
         # Add your deployment commands here
       displayName: 'Run QA commands'
 
+- stage: Rollback
+  displayName: 'Rollback Stage'
+  trigger: manual
+  jobs:
+  - job: RollbackJob
+    displayName: 'Rollback Job'
+    steps:
+    - script: |
+        echo "Rolling back the deployment..."
+        # Add your rollback commands here
+      displayName: 'Run rollback commands'
+
 #variables:
  # buildConfiguration: 'Release'
 
