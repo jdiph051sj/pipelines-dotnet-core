@@ -59,10 +59,22 @@ stages:
     - task: ManualValidation@1
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
-        notifyUsers: 'diphokos@nra.co.za; jdiph051@gmail.com; letsebem@nra.co.za; mafaralalam@nra.co.za'
+        notifyUsers: 'diphokos@nra.co.za; jdiph051@gmail.com, letsebem@nra.co.za, mafaralalam@nra.co.za'
         instructions: 'Please validate the stage configuration and resume'
         onTimeout: 'resume'
 
+- stage: DeployToQA
+  displayName: 'Deploy to QA'
+  condition: succeeded()
+  trigger: manual
+  jobs:
+  - job: DeployToQAJob
+    displayName: 'Deploy to QA Job'
+    steps:
+    - script: |
+        echo "Deploying to QA..."
+        # Add your deployment commands here
+      displayName: 'Run QA commands'
 
 #variables:
  # buildConfiguration: 'Release'
