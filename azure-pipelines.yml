@@ -74,8 +74,8 @@ stages:
     displayName: 'Deploy to QA Job'
     steps:
     - script: |
-        echo "Deploying to QA..."
-        # Add your deployment commands here
+        echo "Deploying to QA..." 
+  # Add your deployment commands here
       displayName: 'Run QA commands'
 
 - stage: Rollback
