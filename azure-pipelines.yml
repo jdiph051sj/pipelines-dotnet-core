@@ -28,8 +28,11 @@ stages:
     
     #Test Artifact
     - task: PublishPipelineArtifact@1
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-
+      #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      inputs: 
+        targetPath: '$(Pipeline.Workspace'
+        publishLocation: pipeline
+        
 - stage: TEST
   displayName: 'Test Stage'
   dependsOn: BUILD
