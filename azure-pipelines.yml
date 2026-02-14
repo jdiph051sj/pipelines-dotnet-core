@@ -26,7 +26,7 @@ stages:
         echo "Running unit tests..."
       displayName: 'Running unit tests'
 
-    - script: dir
+    - script: 
         echo "Print path..."
       displayName: 'Source Directory'
     
