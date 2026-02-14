@@ -25,6 +25,10 @@ stages:
     - script: |
         echo "Running unit tests..."
       displayName: 'Running unit tests'
+
+    - script: dir
+        echo "Print path..."
+      displayName: 'Source Directory'
     
     #Test Artifact
     - task: PublishPipelineArtifact@1
