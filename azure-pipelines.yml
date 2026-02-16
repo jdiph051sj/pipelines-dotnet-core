@@ -29,17 +29,20 @@ stages:
     - script: 
         echo "Print path..."
       displayName: 'Source Directory'
-    
+    - script: dotnet restore
+    - script: dotnet build --configuration Release
+    - script: dotnet publish --configuration Release --output $(Build.ArtifactStagingDirectory)
     #Test Artifact
     - task: PublishPipelineArtifact@1
       displayName: 'Publish Artifact'
       #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
       inputs: 
         #targetPath: '$(Pipeline.Workspace)'
-        targetPath: $(Build.SourcesDirectory)
+        #targetPath: $(Build.SourcesDirectory)
+        targetPath: $(Build.ArtifactStagingDirectory)
         #targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
-        artifactName: WebApp
-        #artifact: drop
+        #artifactName: WebApp
+        artifact: WebApp
         #publishLocation: pipeline
         
 - stage: TEST
