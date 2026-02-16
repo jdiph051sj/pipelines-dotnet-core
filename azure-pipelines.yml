@@ -51,11 +51,11 @@ stages:
         #artifact: WebApp
         #publishLocation: pipeline
 
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'WebApp'
-        publishLocation: 'Container'
+    #- task: PublishBuildArtifacts@1
+     # inputs:
+     #   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+     #   ArtifactName: 'WebApp'
+     #   publishLocation: 'Container'
         
 - stage: TEST
   displayName: 'Test Stage'
