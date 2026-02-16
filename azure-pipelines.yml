@@ -48,8 +48,14 @@ stages:
         targetPath: $(Build.ArtifactStagingDirectory)
         #targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
         #artifactName: WebApp
-        artifact: WebApp
+        #artifact: WebApp
         #publishLocation: pipeline
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'WebApp'
+        publishLocation: 'Container'
         
 - stage: TEST
   displayName: 'Test Stage'
