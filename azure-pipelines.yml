@@ -12,6 +12,10 @@ pool:
   name: Azure Pipeline Agent
   #vmImage: "windows-latest"
 
+# ======================================================
+# BUILD STAGE
+# ======================================================
+
 stages:
 - stage: BUILD
   displayName: 'Build Stage'
@@ -56,6 +60,36 @@ stages:
      #   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
      #   ArtifactName: 'WebApp'
      #   publishLocation: 'Container'
+
+# ======================================================
+# DEPLOY STAGE
+# ======================================================
+
+- stage: Deploy
+  displayName: "Deploy to Azure App Service"
+  dependsOn: Build
+  condition: succeeded()
+
+  jobs:
+  - deployment: DeployWeb
+    displayName: "Deploy Web App"
+    environment: 'DEV'   # Enables approvals
+
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - download: current
+            artifact: $(artifactName)
+
+          - task: AzureWebApp@1
+            displayName: "Deploy to Azure Web App"
+            inputs:
+              azureSubscription: $(Microsoft Azure Enterprise_SANRALHO)
+              appType: 'webApp'
+              appName: $(DotnetCore)
+              package: '$(Pipeline.Workspace)/$(artifactName)/**/*.zip'
         
 - stage: TEST
   displayName: 'Test Stage'
